@@ -1,0 +1,67 @@
+<canvas width="600px" height="400" style="border: 1px solid #000000;"></canvas>
+
+<script>
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+    pincel.fillStyle = 'white';
+    pincel.fillRect(0, 0, 600, 400);
+
+    var raio = 10;
+
+    function desenhaCirculo(x, y, raio, cor) {
+
+        pincel.fillStyle = cor;
+        pincel.beginPath();
+        pincel.arc(x, y, raio, 0, 2 * Math.PI);
+        pincel.fill();
+    }
+
+    function limpaTela() {
+
+        pincel.clearRect(0, 0, 600, 400);
+
+    }
+
+    function desenhaAlvo(x, y) {
+        desenhaCirculo(x, y, raio + 21, 'black'); // maior círculo
+        desenhaCirculo(x, y, raio + 20, 'red'); // maior círculo
+        desenhaCirculo(x, y, raio + 10, 'white');
+        desenhaCirculo(x, y, raio, 'red'); // menor circulo
+    }
+    function sorteiaPosicao(maximo) {
+
+        return Math.floor(Math.random() * maximo);
+
+    }
+    var xAleatório;
+    var yAleatório;
+
+    function atualizaTela() {
+        limpaTela();
+        xAleatório = sorteiaPosicao(600);
+        yAleatório = sorteiaPosicao(400);
+
+        desenhaAlvo(xAleatório, yAleatório);
+    }
+    
+    setInterval(atualizaTela, 1500);
+
+    function dispara(evento) {
+
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;
+
+       // lógica de acerto?
+       if( (x > xAleatório - raio) 
+                && (x < xAleatório + raio) 
+                    && (y > yAleatório - raio) 
+                        && (y < yAleatório + raio)) {
+        alert("acertou");
+       }
+    }
+
+    tela.onclick = dispara;
+
+</script>

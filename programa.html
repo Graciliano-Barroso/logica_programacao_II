@@ -1,0 +1,39 @@
+<canvas width="600px" height="400" style="border: 1px solid #000000;"></canvas>
+
+<script>
+    var tela = document.querySelector("canvas");
+    var pincel = tela.getContext("2d");
+
+    // A cara do Crrper
+    /*pincel.fillStyle = 'white';
+    pincel.fillRect(0, 0, 600, 400);
+
+    pincel.fillStyle = 'darkgreen';
+    pincel.fillRect(125, 50, 350, 300);
+
+    pincel.fillStyle = 'black';
+    pincel.fillRect(175, 110, 90, 90);
+
+    pincel.fillRect(335, 110, 90, 90);
+    
+    pincel.fillRect(265, 200, 70, 100);
+    
+    pincel.fillRect(225, 240, 40, 110);
+    pincel.fillRect(335, 240, 40, 110);*/
+
+    // Esquadro
+    pincel.fillStyle = "black";
+    pincel.beginPath();
+    pincel.moveTo(50, 50);    
+    pincel.lineTo(50, 400);    
+    pincel.lineTo(400, 400);
+    pincel.fill();
+    
+    pincel.fillStyle='white';
+    pincel.beginPath();
+    pincel.moveTo(100, 175);
+    pincel.lineTo(100, 350);
+    pincel.lineTo(275, 350);
+    pincel.fill();
+
+</script>
